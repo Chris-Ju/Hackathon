@@ -153,8 +153,7 @@ function submit() {
       data: {
         id: id,
         anonymous: anonymous,
-        content: content,
-        date: Date().substr(0, 24)
+        content: content
       },
       statusCode: {
         200: function () {
@@ -175,8 +174,7 @@ function submit() {
       data: {
         anonymous: anonymous,
         content: content,
-        random: random,
-        date: Date().substr(0,24)
+        id: random
       },
       statusCode: {
         200: function () {
