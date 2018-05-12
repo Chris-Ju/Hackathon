@@ -94,11 +94,10 @@ function find() {
     dataType: 'jsonp',
     statusCode: {
       200: function (data) {
-        console.log(data);
         if (dataType == "Story") {
-          $("#convleft").html("这是一位酒客的故事：<br>“" + data + "”<br>现在您可以写下您给这位酒客的评论了。");
+          $("#convleft").html("这是一位酒客的故事：<br>“" + data.responseText + "”<br>现在您可以写下您给这位酒客的评论了。");
         } else {
-          $("#convleft").html("这是您的糖果，请拿好！<br>“" + data + "”<br>你笑起来一定很好看！希望你有开心的一天哦~<br>您有什么想说的话，可以附在糖果后面哦~");
+          $("#convleft").html("这是您的糖果，请拿好！<br>“" + data.responseText + "”<br>你笑起来一定很好看！希望你有开心的一天哦~<br>您有什么想说的话，可以附在糖果后面哦~");
         }
       }
     }
