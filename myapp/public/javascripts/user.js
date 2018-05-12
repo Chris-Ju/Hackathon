@@ -16,6 +16,7 @@ $(function () {
   $(".exit").bind("click", signOut);
   $(".mywine").bind("click", jumpToMyWine);
   $(".mycandy").bind("click", jumpToMyCandy);
+  $("#antyStar").bind("click", go);
 });
 
 function jumpToHome(){
@@ -40,6 +41,14 @@ function signOut() {
       }
     }
   });
+}
+
+function showAntyStar(){
+  $("#antyStar").css('opacity', 1);
+}
+
+function hideAntyStar(){
+  $("#antyStar").css('opacity', 0);
 }
 
 function showIntroduction() {
@@ -130,6 +139,13 @@ function find() {
       200: function (data) {
         var obj = eval('(' + data.responseText + ')');
         id = obj.random;
+        var op = obj.anonymous;
+        if(op == "true") {
+          hideAntyStar();
+        }
+        else{
+          showAntyStar();
+        }
         if (dataType == "Story") {
           $("#convleft").html("这是一位酒客的故事：<br>“" + obj.content + "”<br>现在您可以写下您给这位酒客的评论了。");
         } else {
@@ -190,4 +206,21 @@ function submit() {
       }
     });
   }
+}
+
+function go() {
+  $("#antyStar").unbind('click');
+  $.ajax({
+      url: '/other' + dataType,
+      type: 'POST',
+      dataType: 'jsonp',
+      data: {
+        random: id
+      },
+      statusCode: {
+        200: function () {
+          window.location.href = "/other";
+        }
+      }
+    });
 }
