@@ -67,7 +67,7 @@ function findOneStory(callback) {
     });
 }
 
-function insertOneStory(callback) {
+function insertOneStory(data, callback) {
     MongoClient.connect(url, function (err, client) {
         var dbase = client.db('mytestingdb');
         dbase.collection('story').insertOne(data, function (err, result) {
@@ -94,7 +94,7 @@ function findOneCandy(callback) {
     });
 }
 
-function insertOneCandy(callback) {
+function insertOneCandy(data, callback) {
     MongoClient.connect(url, function (err, client) {
         var dbase = client.db('mytestingdb');
         dbase.collection('candy').insertOne(data, function (err, result) {
