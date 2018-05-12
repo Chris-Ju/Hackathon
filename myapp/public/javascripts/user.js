@@ -35,9 +35,9 @@ function moveOut() {
     sweetHouse = true;
     setTimeout(function () {
       $(".main #left").children(".title1").html("糖果");
-      $(".main #left").children(".star").attr("src", "images/book.png");
+      $(".main #left").children(".star").attr("src", "images/candy.png");
       $(".main #right").children(".title1").html("贩卖机");
-      $(".main #right").children(".star").attr("src", "images/wine.png");
+      $(".main #right").children(".star").attr("src", "images/machine.png");
       $(".main #left").removeClass("fadeOutLeft").addClass("zoomIn");
       $(".main #right").removeClass("fadeOutRight").addClass("zoomIn");
       //$("<img/>").attr("src", imgs[counter]).addClass("animated zoomIn").insertBefore($(".center p"));
