@@ -20,31 +20,18 @@ router.use(session({
 /* GET home page. */
 router.get('/', function (req, res, next) {
   if (!!req.session.user) {
-    res.render('wine');
+    res.render('othercandy');
   } else {
     res.render('index');
   }
 });
-
 
 router.post('/', function (req, res, next) {
   if (!!req.session.user) {
     var dt = {};
     dt.username = req.session.user;
-    data.findAllStory(dt, function (result) {
-      res.status(200).send(result);
-      res.end();
-    });
-  } else {
-    res.render('index');
-  }
-});
-
-
-router.post('/comment', function (req, res, next) {
-  if (!!req.session.user) {
-    var dt = req.body;
-    data.findComment(dt, function (result) {
+    dt.anonymous = "false";
+    data.findAllCandy(dt, function (result) {
       res.status(200).send(result);
       res.end();
     });
