@@ -8,7 +8,17 @@ html
     link(type="text/css", href="stylesheets/styles.css", rel="stylesheet")
     |
     link(type="text/css",href="stylesheets/animate.min.css",rel="stylesheet")
-    |     
+    |
+    link(type="text/css",href="stylesheets/style.css", rel="stylesheet")
+    |
+    link(type="text/css",href="stylesheets/reset.css", rel="stylesheet")
+    |
+    script(src="javascripts/jquery-1.11.0.min.js", type="text/javascript")   
+    |  
+    script(src="javascripts/modernizr-custom.js", type="text/javascript")
+    |
+    script(src="javascripts/main.js", type="text/javascript")
+    |
     script(src="javascripts/jquery-1.11.2.min.js", type="text/javascript")
     |     
     script(src="javascripts/modernizr-2.6.2.min.js", type="text/javascript")
@@ -26,14 +36,28 @@ html
   body
     
     canvas#fullstarbg 你的浏览器不支持canvas标签
-    |  
-    .appbar
-      .my
-        botton#mywine 我的故事
-        botton#mycandy 我的糖果
-      .logout
-        botton#exit 退出登陆
-    |  
+    |
+    header.cd-morph-dropdown
+      a.nav-trigger(href="#0") Open Nav
+        span(aria-hidden="true")
+      nav.main-nav
+        ul
+          li(class="has-dropdown gallery" data-content="about")
+            a(href="#0") 我的故事
+          li(class="has-dropdown links" data-content="pricing")
+            a(href="#0") 我的糖果
+          li(class="has-dropdown button" data-content="contact")
+            a(href="#0") 退出登陆
+      .morph-dropdown-wrapper
+        .dropdown-list
+          ul
+            li#about(class="dropdown gallery")
+              a.label(href="#0") 我的故事
+            li#pricing(class="dropdown links")
+              a.label(href="#0") 我的糖果
+            li#contact(class="dropdown button")
+              a.label(href="#0") 退出登陆
+    | 
     .content
       img.rabitBg(src="images/rabit.png")
       |
