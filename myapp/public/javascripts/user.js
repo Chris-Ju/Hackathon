@@ -13,7 +13,17 @@ $(function () {
   $("#right").bind('click', clickEvent).bind('mouseenter', showIntroduction).bind('mouseleave', hideIntroduction);
   $("#confirm").bind('click', submit);
   $("#exit").bind("click", signOut);
+  $("#mywine").bind("click", jumpToMyWine);
+  $("#mycandy").bind("click", jumpToMyCandy);
 });
+
+function jumpToMyWine() {
+  window.location.href = "/wine";
+}
+
+function jumpToMyCandy() {
+  window.location.href = "/candy";
+}
 
 function signOut() {
   $.ajax({
@@ -53,6 +63,7 @@ function clickEvent() {
       story = false;
       dataType = "Story";
       critical = true;
+      $("#convright").attr('placeholder', "请留下您的评论");
       find();
     } else if ($(this).attr("id") == "left" && sweetHouse) {
       sweet = true;
@@ -62,6 +73,7 @@ function clickEvent() {
       sweet = false;
       dataType = "Candy";
       critical = true;
+      $("#convright").attr('placeholder', "请留下您的评论");
       find();
     }
   } else if ($(this).attr("id") == "left" && !storyHouse) {
@@ -122,6 +134,7 @@ function submit() {
       type: 'POST',
       dataType: 'jsonp',
       data: {
+        id: id,
         anonymous: anonymous,
         content: content
       },
