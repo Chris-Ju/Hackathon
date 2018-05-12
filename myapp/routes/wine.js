@@ -20,7 +20,7 @@ router.use(session({
 /* GET home page. */
 router.get('/', function (req, res, next) {
   if (!!req.session.user) {
-    res.render('candy');
+    res.render('wine');
   } else {
     res.render('index');
   }
