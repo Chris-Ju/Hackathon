@@ -1,0 +1,74 @@
+doctype html
+html
+  head(lang="en")
+    meta(charset="UTF-8")
+    |     
+    title
+    |     
+    link(type="text/css", href="stylesheets/styles.css", rel="stylesheet")
+    |
+    link(type="text/css",href="stylesheets/animate.min.css",rel="stylesheet")
+    | 
+    link(type="text/css",href="stylesheets/wine.css",rel="stylesheet")
+    |
+    link(type="text/css",href="stylesheets/style.css", rel="stylesheet")
+    |
+    link(type="text/css",href="stylesheets/reset.css", rel="stylesheet")
+    |
+    script(src="javascripts/jquery-1.11.0.min.js", type="text/javascript")   
+    |  
+    script(src="javascripts/modernizr-custom.js", type="text/javascript")
+    |
+    script(src="javascripts/main.js", type="text/javascript")
+    |    
+    script(src="javascripts/jquery-1.11.2.min.js", type="text/javascript")
+    |  
+    script(src="javascripts/jquery.SuperSlide2.js", type="text/javascript")
+    |   
+    script(src="javascripts/modernizr-2.6.2.min.js", type="text/javascript")
+    |
+    script(src="javascripts/wine.js", type="text/javascript")
+    |
+    script(src="javascripts/starbg.js", type="text/javascript")
+    |
+    style.
+      *{ margin:0; padding:0;}
+      canvas{ display: block; margin: 0; width:100%; height:100%; position: fixed; left: 0; right: 0; top:0; bottom:0;
+      z-index: -1; }
+      .content{ width: 1144px; margin: 0 auto; padding-top:200px;}
+      .rabitBg{ position:fixed; left:0; top:50%;}
+  body
+    
+    canvas#fullstarbg 你的浏览器不支持canvas标签
+    |  
+    header.cd-morph-dropdown
+      a.nav-trigger(href="#0") Open Nav
+        span(aria-hidden="true")
+      nav.main-nav
+        ul
+          li(class="has-dropdown home" data-content="home")
+            a.myhome(href="#0") 首页
+          li(class="has-dropdown gallery" data-content="about")
+            a.mywine(href="#0") 我的故事
+          li(class="has-dropdown links" data-content="pricing")
+            a.mycandy(href="#0") 我的糖果
+          li(class="has-dropdown button" data-content="contact")
+            a.exit(href="#0") 退出登陆
+      .morph-dropdown-wrapper
+        .dropdown-list
+          ul
+            li#home(class="dropdown home")
+              a.myhome.label(href="#0") 首页
+            li#about(class="dropdown gallery")
+              a.mywine.label(href="#0") 我的故事
+            li#pricing(class="dropdown links")
+              a.mycandy.label(href="#0") 我的糖果
+            li#contact(class="dropdown button")
+              a.exit.label(href="#0") 退出登陆
+    |  
+    .friend
+      .mr_frbox
+        img.mr_frBtnL.prev(src='images/leftarrow.png')
+        .mr_frUl
+          ul#mr_fu            
+        img.mr_frBtnR.next(src='images/rightarrow.png')
