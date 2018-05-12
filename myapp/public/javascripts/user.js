@@ -5,12 +5,25 @@ var sweet = false;
 var dataType = "";
 
 $(function () {
+  $(".div1").addClass("zoomIn");
+  $(".div2").addClass("zoomIn");
   $("#left").bind('click', clickEvent).bind('mouseenter', showIntroduction).bind('mouseleave', hideIntroduction);
   $("#right").bind('click', clickEvent).bind('mouseenter', showIntroduction).bind('mouseleave', hideIntroduction);
   $("#confirm").bind('click', submit);
   $("#exit").bind("click",signOut);
 });
 
+function signOut() {
+  $.ajax({
+    url: '/user/loginout',
+    type: 'POST',
+    statusCode: {
+      200: function (data) {
+        window.location.href = "/";
+      }
+    }
+  });
+}
 function showIntroduction() {
   $(this).next('.intro').css('opacity', 1);
 }
@@ -81,10 +94,11 @@ function find() {
     dataType: 'jsonp',
     statusCode: {
       200: function (data) {
+        console.log(data);
         if (dataType == "Story") {
-          $("#convleft").html("这是一位酒客的故事：<br>“" + data.content + "”<br>现在您可以写下您给这位酒客的评论了。");
+          $("#convleft").html("这是一位酒客的故事：<br>“" + data + "”<br>现在您可以写下您给这位酒客的评论了。");
         } else {
-          $("#convleft").html("这是您的糖果，请拿好！<br>“" + data.content + "”<br>你笑起来一定很好看！希望你有开心的一天哦~<br>您有什么想说的话，可以附在糖果后面哦~");
+          $("#convleft").html("这是您的糖果，请拿好！<br>“" + data + "”<br>你笑起来一定很好看！希望你有开心的一天哦~<br>您有什么想说的话，可以附在糖果后面哦~");
         }
       }
     }
@@ -93,6 +107,7 @@ function find() {
 
 function submit() {
   var anonymous = $("input:checkbox:checked").val();
+  console.log(anonymous);
   var content = $("#convright").val();
   var random = Math.random();
   $.ajax({

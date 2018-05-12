@@ -61,7 +61,7 @@ function findOneStory(callback) {
         var random = Math.random();
         dbase.collection('story').find({"random":{"$lt":random}}).toArray(function (err, result) {
             if (result.length == 0) {
-                dbase.collection('story').findOne({"random":{"$gte":random}}).toArray(function (err, result) {
+                dbase.collection('story').find({"random":{"$gte":random}}).toArray(function (err, result) {
                     client.close();
                     callback(result[0]);
                 });
@@ -95,7 +95,7 @@ function findOneCandy(callback) {
         var random = Math.random();
         dbase.collection('candy').find({"random":{"$lt":random}}).toArray(function (err, result) {
             if (result.length == 0) {
-                dbase.collection('candy').findOne({"random":{"$gte":random}}).toArray(function (err, result) {
+                dbase.collection('candy').find({"random":{"$gte":random}}).toArray(function (err, result) {
                     client.close();
                     callback(result[0]);
                 });
