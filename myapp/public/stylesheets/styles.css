@@ -424,43 +424,4 @@ body {
   opacity: 0;
 }
 
-.div3{
-  position: absolute;
-  margin-left: 260px;
-  margin-top: -20px;
-  transition: all 0.3s;
-  width: 300px;
-  height: 200px;
-}
 
-.dialeft{
-  position: relative;
-  width: 300px;
-  height: 200px;
-}
-
-.candyleft{
-  position: relative;
-  margin-top: -340px;
-  padding-left: 20px;
-  width: 270px;
-  height: 180px;
-}
-
-#candyDia1{
-  position: relative;
-  margin-left: 50px;
-}
-
-.div4{
-  position: absolute;
-  margin-left: 580px;
-  margin-top: -20px;
-  transition: all 0.3s;
-}
-
-.diaright{
-  position: relative;
-  width: 300px;
-  height: 200px;
-}
