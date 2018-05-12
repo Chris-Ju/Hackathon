@@ -3,6 +3,8 @@ var sweetHouse = false;
 var story = false;
 var sweet = false;
 var dataType = "";
+var critical = false;
+var id;
 
 $(function () {
   $(".div1").addClass("zoomIn");
@@ -10,7 +12,7 @@ $(function () {
   $("#left").bind('click', clickEvent).bind('mouseenter', showIntroduction).bind('mouseleave', hideIntroduction);
   $("#right").bind('click', clickEvent).bind('mouseenter', showIntroduction).bind('mouseleave', hideIntroduction);
   $("#confirm").bind('click', submit);
-  $("#exit").bind("click",signOut);
+  $("#exit").bind("click", signOut);
 });
 
 function signOut() {
@@ -24,6 +26,7 @@ function signOut() {
     }
   });
 }
+
 function showIntroduction() {
   $(this).next('.intro').css('opacity', 1);
 }
@@ -49,6 +52,7 @@ function clickEvent() {
     } else if ($(this).attr("id") == "right" && storyHouse) {
       story = false;
       dataType = "Story";
+      critical = true;
       find();
     } else if ($(this).attr("id") == "left" && sweetHouse) {
       sweet = true;
@@ -57,6 +61,7 @@ function clickEvent() {
     } else if ($(this).attr("id") == "right" && sweetHouse) {
       sweet = false;
       dataType = "Candy";
+      critical = true;
       find();
     }
   } else if ($(this).attr("id") == "left" && !storyHouse) {
@@ -94,10 +99,12 @@ function find() {
     dataType: 'jsonp',
     statusCode: {
       200: function (data) {
+        var obj = eval('(' + data.responseText + ')');
+        id = obj.random;
         if (dataType == "Story") {
-          $("#convleft").html("这是一位酒客的故事：<br>“" + data.responseText + "”<br>现在您可以写下您给这位酒客的评论了。");
+          $("#convleft").html("这是一位酒客的故事：<br>“" + obj.content + "”<br>现在您可以写下您给这位酒客的评论了。");
         } else {
-          $("#convleft").html("这是您的糖果，请拿好！<br>“" + data.responseText + "”<br>你笑起来一定很好看！希望你有开心的一天哦~<br>您有什么想说的话，可以附在糖果后面哦~");
+          $("#convleft").html("这是您的糖果，请拿好！<br>“" + obj.content + "”<br>你笑起来一定很好看！希望你有开心的一天哦~<br>您有什么想说的话，可以附在糖果后面哦~");
         }
       }
     }
@@ -105,23 +112,40 @@ function find() {
 }
 
 function submit() {
+  $("#confirm").unbind('click');
   var anonymous = $("input:checkbox:checked").val();
-  console.log(anonymous);
   var content = $("#convright").val();
   var random = Math.random();
-  $.ajax({
-    url: '/user/insert' + dataType,
-    type: 'POST',
-    dataType: 'jsonp',
-    data: {
-      anonymous: anonymous,
-      content: content,
-      random: random
-    },
-    statusCode: {
-      200: function () {
-        window.location.href = "/user";
+  if (critical) {
+    $.ajax({
+      url: '/user/comment',
+      type: 'POST',
+      dataType: 'jsonp',
+      data: {
+        anonymous: anonymous,
+        content: content
+      },
+      statusCode: {
+        200: function () {
+          window.location.href = "/user";
+        }
       }
-    }
-  });
+    });
+  } else {
+    $.ajax({
+      url: '/user/insert' + dataType,
+      type: 'POST',
+      dataType: 'jsonp',
+      data: {
+        anonymous: anonymous,
+        content: content,
+        random: random
+      },
+      statusCode: {
+        200: function () {
+          window.location.href = "/user";
+        }
+      }
+    });
+  }
 }
