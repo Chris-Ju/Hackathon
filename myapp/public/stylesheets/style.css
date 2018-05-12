@@ -110,7 +110,7 @@ a {
   display: block;
 }
 .cd-morph-dropdown .dropdown-list > ul > li {
-  margin-bottom: 3.3em;
+  margin-bottom: 1.3em;
 }
 .cd-morph-dropdown .label {
   display: block;
@@ -441,5 +441,5 @@ Main site content
 
 .main-nav{
   position: absolute;
-  margin-left: 200px;
+  margin-left: 130px;
 }

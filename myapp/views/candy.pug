@@ -7,11 +7,15 @@ html
     |     
     link(type="text/css", href="stylesheets/styles.css", rel="stylesheet")
     |
-    link(type="text/css",href="stylesheets/animate.min.css",rel="stylesheet")
+    link(type="text/css", href="stylesheets/animate.min.css", rel="stylesheet")
+    |
+    link(type="text/css", href="stylesheets/style1.css", rel="stylesheet")
     |     
     script(src="javascripts/jquery-1.11.2.min.js", type="text/javascript")
     |     
     script(src="javascripts/modernizr-2.6.2.min.js", type="text/javascript")
+    |     
+    script(src="javascripts/starbg.js", type="text/javascript")
     |
     style.
       *{ margin:0; padding:0;}
@@ -23,13 +27,9 @@ html
     
     canvas#fullstarbg 你的浏览器不支持canvas标签
     |  
-    .appbar
-      .my
-        botton#mywine 我的故事
-        botton#mycandy 我的糖果
-      .logout
-        botton#exit 退出登陆
-    |  
-    .content
-      img.rabitBg(src="images/rabit.png")
-      |
+    .friend
+      .mr_frbox
+        img(class="mr_frBtnL prev" src="images/leftarrow.png")
+        .mr_frUl
+          li
+            

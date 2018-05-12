@@ -42,6 +42,8 @@ html
         span(aria-hidden="true")
       nav.main-nav
         ul
+          li(class="has-dropdown home" data-content="home")
+            a.myhome(href="#0") 首页
           li(class="has-dropdown gallery" data-content="about")
             a.mywine(href="#0") 我的故事
           li(class="has-dropdown links" data-content="pricing")
@@ -51,6 +53,8 @@ html
       .morph-dropdown-wrapper
         .dropdown-list
           ul
+            li#home(class="dropdown home")
+              a.myhome.label(href="#0") 首页
             li#about(class="dropdown gallery")
               a.mywine.label(href="#0") 我的故事
             li#pricing(class="dropdown links")

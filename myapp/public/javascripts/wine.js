@@ -1,5 +1,36 @@
 $(document).ready(function () {
 
+  $(function () {
+    $(".myhome").bind("click", jumpToHome);
+    $(".exit").bind("click", signOut);
+    $(".mywine").bind("click", jumpToMyWine);
+    $(".mycandy").bind("click", jumpToMyCandy);
+  });
+
+  function jumpToHome(){
+    window.location.href = "/user";
+  }
+
+  function jumpToMyWine() {
+    window.location.href = "/wine";
+  }
+
+  function jumpToMyCandy() {
+    window.location.href = "/candy";
+  }
+
+  function signOut() {
+    $.ajax({
+      url: '/user/loginout',
+      type: 'POST',
+      statusCode: {
+        200: function (data) {
+          window.location.href = "/";
+        }
+      }
+    });
+  }
+
   /* 图片滚动效果 */
   $(".mr_frbox").slide({
     titCell: "",

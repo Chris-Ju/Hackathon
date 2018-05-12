@@ -12,10 +12,15 @@ $(function () {
   $("#left").bind('click', clickEvent).bind('mouseenter', showIntroduction).bind('mouseleave', hideIntroduction);
   $("#right").bind('click', clickEvent).bind('mouseenter', showIntroduction).bind('mouseleave', hideIntroduction);
   $("#confirm").bind('click', submit);
+  $(".myhome").bind("click", jumpToHome);
   $(".exit").bind("click", signOut);
   $(".mywine").bind("click", jumpToMyWine);
   $(".mycandy").bind("click", jumpToMyCandy);
 });
+
+function jumpToHome(){
+  window.location.href = "/user";
+}
 
 function jumpToMyWine() {
   window.location.href = "/wine";

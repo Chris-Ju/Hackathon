@@ -312,13 +312,14 @@ body {
   text-align: center;
   font-size: 20px;
   border-radius: 50px;
-  background: #0096e6;
+  background: #3d6889;
   width: 150px;
   float: left;
   margin-left: 30px;
   border: 0;
   color: #FFFFFF;
   cursor: pointer;
+  opacity: 0.8;
 }
 
 #signout {
@@ -498,7 +499,8 @@ body {
   line-height: 10px;
   text-align: center;
   border-radius: 50px;
-  background: #0096e6;
+  background: #3d6889;
+  opacity: 0.6;
   width: 80px;
   float: left;
   margin-left: 180px;
