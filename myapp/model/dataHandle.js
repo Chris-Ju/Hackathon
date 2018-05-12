@@ -59,17 +59,9 @@ function findOneStory(callback) {
     MongoClient.connect(url, function (err, client) {
         var dbase = client.db('mytestingdb');
         var random = Math.random();
-        dbase.collection('story').find({"random":{"$lt":random}}).toArray(function (err, result) {
-            if (result.length == 0) {
-                dbase.collection('story').findOne({"random":{"$gte":random}}).toArray(function (err, result) {
-                    client.close();
-                    callback(result[0]);
-                });
-                
-            } else {
-                client.close();
-                callback(result[0]);            
-            }
+        dbase.collection('story').find({}).toArray(function (err, result) {
+            client.close();
+            callback(result[Math.floor(Math.random() * result.length)]);
         });
     });
 }
@@ -94,16 +86,8 @@ function findOneCandy(callback) {
         var dbase = client.db('mytestingdb');
         var random = Math.random();
         dbase.collection('candy').find({"random":{"$lt":random}}).toArray(function (err, result) {
-            if (result.length == 0) {
-                dbase.collection('candy').findOne({"random":{"$gte":random}}).toArray(function (err, result) {
-                    client.close();
-                    callback(result[0]);
-                });
-                
-            } else {
-                client.close();
-                callback(result[0]);
-            }
+            client.close();
+            callback(result[Math.floor(Math.random() * result.length)]);
         });
     });
 }

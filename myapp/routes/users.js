@@ -65,7 +65,7 @@ router.post('/insertCandy', function (req, res, next) {
 router.post('/findStory', function (req, res, next) {
   data.findOneStory(function(result) {
     console.log(result);
-    res.status(200).json(result);
+    res.status(200).send(result.content);
     res.end();
   });
 });
@@ -73,7 +73,7 @@ router.post('/findStory', function (req, res, next) {
 router.post('/findCandy', function (req, res, next) {
   data.findOneCandy(function(result) {
     console.log(result);
-    res.status(200).json(result);
+    res.status(200).send(result.content);
     res.end();
   });
 });
