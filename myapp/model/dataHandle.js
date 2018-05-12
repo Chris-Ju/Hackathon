@@ -55,11 +55,15 @@ function checkPass(data, callback) {
     });
 }
 
-function findOneStory(callback) {
+function findOneStory(data, callback) {
     MongoClient.connect(url, function (err, client) {
         var dbase = client.db('mytestingdb');
         var random = Math.random();
-        dbase.collection('story').find({}).toArray(function (err, result) {
+        dbase.collection('story').find({
+            "username": {
+                "$ne": data.username
+            }
+        }).toArray(function (err, result) {
             client.close();
             callback(result[Math.floor(Math.random() * result.length)]);
         });
@@ -81,11 +85,15 @@ function insertOneStory(data, callback) {
     });
 }
 
-function findOneCandy(callback) {
+function findOneCandy(data, callback) {
     MongoClient.connect(url, function (err, client) {
         var dbase = client.db('mytestingdb');
         var random = Math.random();
-        dbase.collection('candy').find({}).toArray(function (err, result) {
+        dbase.collection('candy').find({
+            "username": {
+                "$ne": data.username
+            }
+        }).toArray(function (err, result) {
             client.close();
             callback(result[Math.floor(Math.random() * result.length)]);
         });

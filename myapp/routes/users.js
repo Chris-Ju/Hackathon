@@ -65,7 +65,9 @@ router.post('/insertCandy', function (req, res, next) {
 });
 
 router.post('/findStory', function (req, res, next) {
-  data.findOneStory(function(result) {
+  var dt = {};
+  dt.username = req.session.user;
+  data.findOneStory(dt, function(result) {
     console.log(result);
     res.status(200).json(result);
     res.end();
@@ -73,7 +75,9 @@ router.post('/findStory', function (req, res, next) {
 });
 
 router.post('/findCandy', function (req, res, next) {
-  data.findOneCandy(function(result) {
+  var dt = {};
+  dt.username = req.session.user;
+  data.findOneCandy(dt, function(result) {
     console.log(result);
     res.status(200).json(result);
     res.end();
