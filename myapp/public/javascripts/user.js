@@ -12,19 +12,18 @@ function moveOut() {
   }, 1000);
 }
 function submit() {
+  var niming=$("#niming").val();
+  var content=$("#content").val();
   $.ajax({
-    url: '/regist',
+    url: '/user',
     type: 'POST',
     dataType: 'jsonp',
     data: {
-      username: username,
-      password: password,
-      phone: phone,
-      email: email
+      niming: niming,
+      content: content    
     },
     statusCode: {
       200: function () {
-        deleteWarning();
         window.location.href = "/";
       }
     }
