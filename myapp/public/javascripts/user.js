@@ -1,9 +1,13 @@
 var storyHouse = false;
 var sweetHouse = false;
+var story = false;
+var sweet = false;
+var dataType = "";
 
 $(function () {
-  $("#left").click(clickEvent).hover(showIntroduction, hideIntroduction);
-  $("#right").click(clickEvent).hover(showIntroduction, hideIntroduction);
+  $("#left").bind('click', clickEvent).bind('mouseenter', showIntroduction).bind('mouseleave', hideIntroduction);
+  $("#right").bind('click', clickEvent).bind('mouseenter', showIntroduction).bind('mouseleave', hideIntroduction);
+  $("#confirm").bind('click',submit);
 });
 
 function showIntroduction() {
@@ -17,10 +21,26 @@ function hideIntroduction() {
 function clickEvent() {
   $("#left").removeClass("zoomIn").addClass("fadeOutLeft");
   $("#right").removeClass("zoomIn").addClass("fadeOutRight");
-  if ($(this).attr("id") == "left" && storyHouse) {
-
-  } else if ($(this).attr("id") == "right" && sweetHouse) {
-
+  if (storyHouse || sweetHouse) {
+    setTimeout(function () {
+      $(".div1").remove();
+      $(".div2").remove();
+      $(".div3").show().addClass("zoomIn");
+      $(".div4").show().addClass("zoomIn");
+    }, 1000);
+    if ($(this).attr("id") == "left" && storyHouse) {
+      story = true;
+      dataType = "Story";
+    } else if ($(this).attr("id") == "right" && storyHouse) {
+      story = false;
+      dataType = "Story";
+    } else if ($(this).attr("id") == "left" && sweetHouse) {
+      sweet = true;
+      dataType = "Candy";
+    } else if ($(this).attr("id") == "right" && sweetHouse) {
+      sweet = false;
+      dataType = "Candy";
+    }
   } else if ($(this).attr("id") == "left" && !storyHouse) {
     storyHouse = true;
     setTimeout(function () {
@@ -49,20 +69,35 @@ function clickEvent() {
   }
 }
 
-function submit() {
-  var niming = $("#niming").val();
-  var content = $("#content").val();
+function find() {
   $.ajax({
-    url: '/user',
+    url: '/user/find' + dataType,
+    type: 'POST',
+    dataType: 'jsonp',
+    statusCode: {
+      200: function (data) {
+        
+      }
+    }
+  });
+}
+
+function submit() {
+  var anonymous = $("input:checkbox:checked").val();
+  var content = $("#convright").val();
+  var random = Math.random();
+  $.ajax({
+    url: '/user/insert' + dataType,
     type: 'POST',
     dataType: 'jsonp',
     data: {
-      niming: niming,
-      content: content
+      anonymous: anonymous,
+      content: content,
+      random: random
     },
     statusCode: {
       200: function () {
-        window.location.href = "/";
+        window.location.href = "/user";
       }
     }
   });
