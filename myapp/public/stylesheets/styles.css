@@ -353,9 +353,17 @@ body {
   body{ font-size: 24px;}
 }
 */
+
+/*#maintitle{
+  position: absolute;
+  font-family: FZShuTi, sans-serif;
+  font-size: 30pt;
+  margin-top: -120px;
+}*/
+
 .main{
   position: relative;
-  margin-left: 100px;
+  margin-left: 200px;
 }
 
 .boxes{
@@ -368,7 +376,7 @@ body {
   line-height: 20px;
   text-align: center;
   font-size: 20px;
-  background: #0096e6;
+  background-color: rgba(255, 255, 255, 0.2);
   width: 200px;
   height: 150px;
   margin-left: 120px;
@@ -376,6 +384,17 @@ body {
   color: #FFFFFF;
   cursor: pointer;
   border-radius: 20px;
+  transition: all 0.3s;
+}
+
+#left:hover{
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #1F2B63;
+}
+
+#right:hover{
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #1F2B63;
 }
 
 #left{
@@ -386,4 +405,21 @@ body {
 #right{
   position: absolute;
   margin-left: 600px;
+}
+
+.intro{
+  position: absolute;
+  width: 500px;
+  margin-left: 300px;
+  margin-top: 200px;
+  font-size: 12pt;
+  transition: all 0.3s;
+}
+
+#intro1{
+  opacity: 0;
+}
+
+#intro2{
+  opacity: 0;
 }
