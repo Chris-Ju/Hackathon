@@ -11,7 +11,7 @@ img {
 }
 
 body {
-  font: 12px/180% Arial, Helvetica, sans-serif, "新宋体";
+  font: 12px/180%;
 }
 
 /*课程介绍 轮播*/
@@ -133,7 +133,7 @@ body {
 }
 .story{
   text-align: center;
-  height: 250px;
+  height: 274px;
   font-size: 25px;
   font-weight: bold;
   color: #fff;
