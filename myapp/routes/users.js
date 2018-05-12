@@ -28,7 +28,8 @@ router.get('/', function (req, res, next) {
 
 router.post('/loginout', function (req, res, next) {
   req.session.destroy();
-  res.redirect('/');
+  res.status(200);
+  res.end();
 });
 
 router.post('/insertStory', function (req, res, next) {
@@ -62,14 +63,14 @@ router.post('/insertCandy', function (req, res, next) {
 });
 
 router.post('/findStory', function (req, res, next) {
-  data.findOneStory(req.body, function(result) {
+  data.findOneStory(function(result) {
     res.status(200).json(result);
     res.end();
   });
 });
 
 router.post('/findCandy', function (req, res, next) {
-  data.findOneCandy(req.body, function(result) {
+  data.findOneCandy(function(result) {
     res.status(200).json(result);
     res.end();
   });
