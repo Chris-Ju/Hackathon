@@ -107,6 +107,21 @@ function insertOneCandy(data, callback) {
     });
 }
 
+function insertComment(data, callback) {
+    MongoClient.connect(url, function (err, client) {
+        var dbase = client.db('mytestingdb');
+        dbase.collection('comment').insertOne(data, function (err, result) {
+            if (err) {
+                console.log('Error:' + err);
+                client.close();
+                callback(false);
+            }
+            client.close();
+            callback(true);
+        });
+    });
+}
+
 exports.insert = insert;
 exports.check = check;
 exports.checkPass = checkPass;
