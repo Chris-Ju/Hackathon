@@ -429,6 +429,8 @@ body {
   margin-left: 260px;
   margin-top: -20px;
   transition: all 0.3s;
+  width: 300px;
+  height: 200px;
 }
 
 .dialeft{
@@ -439,8 +441,15 @@ body {
 
 .candyleft{
   position: relative;
-  margin-top: -160px;
-  margin-left: 0px;
+  margin-top: -340px;
+  padding-left: 20px;
+  width: 270px;
+  height: 180px;
+}
+
+#candyDia1{
+  position: relative;
+  margin-left: 50px;
 }
 
 .div4{
