@@ -19,27 +19,40 @@ $(document).ready(function () {
             "</span>评论数（" + commentNumber +
             "）</h3></div></div></div></li>");
           $("#mr_fu").append(li);
-          li.bind('click', function () {
-            var random = $(this).attr('id');
-            $.ajax({
-              url: '/candy/comment',
-              type: 'POST',
-              dataType: 'jsonp',
-              data: {
-                random: random
-              },
-              statusCode: {
-                200: function (data) {
-                  var arr = eval(data.responseText);
-                  for (var i = 0; i < arr.length; i++) {
-                    var obj = arr[i];
-                    console.log(obj);
-                  }
+        }
+        $('li').bind('click', function () {
+          var random = $(this).attr('id');
+          $.ajax({
+            url: '/wine/comment',
+            type: 'POST',
+            dataType: 'jsonp',
+            data: {
+              id: random
+            },
+            statusCode: {
+              200: function (data) {
+                console.log(data);
+                var arr = eval(data.responseText);
+                if (arr.length > 0) {
+                  $('.friend').addClass('zoomOut');
+                  setTimeout(function () {
+                    $('.friend').remove();
+                    $(".commend").show().addClass("zoomIn");
+                    var ul = $('.commend').children('ul');
+                    for (var i = 0; i < arr.length; i++) {
+                      var obj = arr[i];
+                      var content = obj.content;
+                      var li = $('<li class="divList"><img src="images/dialeft.png" class="commendImg"/><p class= "commendText">' +
+                        content + '</p ></li>');
+                      ul.append(li);
+                      console.log(obj);
+                    }
+                  }, 1000);
                 }
               }
-            });
+            }
           });
-        }
+        })
         /* 图片滚动效果 */
         $(".mr_frbox").slide({
           titCell: "",

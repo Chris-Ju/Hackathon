@@ -27,7 +27,7 @@ $(document).ready(function () {
             type: 'POST',
             dataType: 'jsonp',
             data: {
-              random: random
+              id: random
             },
             statusCode: {
               200: function (data) {
@@ -36,14 +36,14 @@ $(document).ready(function () {
                 if (arr.length > 0) {
                   $('.friend').addClass('zoomOut');
                   setTimeout(function () {
-                    //$('.friend').remove();
+                    $('.friend').remove();
                     $(".commend").show().addClass("zoomIn");
                     var ul = $('.commend').children('ul');
                     for (var i = 0; i < arr.length; i++) {
                       var obj = arr[i];
                       var content = obj.content;
-                      var li = $('<li class="divList"><img src="images/dialeft.png" class="commendImg"/>< p class= "commendText" > 用户xx：' +
-                        content + '</p ></li >');
+                      var li = $('<li class="divList"><img src="images/dialeft.png" class="commendImg"/><p class= "commendText">' +
+                        content + '</p ></li>');
                       ul.append(li);
                       console.log(obj);
                     }
