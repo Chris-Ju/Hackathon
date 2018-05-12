@@ -143,3 +143,28 @@ body {
   overflow: hidden;
   padding: 20px;
 }
+
+.commend{
+  position: relative;
+  width: 800px;
+  height: 390px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -390px;
+}
+
+.divList{
+  position: relative;
+  margin-left: 250px;
+  height: 110px;
+}
+
+.commendImg{
+  width: 350px;
+  height: 100px;
+}
+
+.commendText{
+  margin-left: 40px;
+  margin-top: -70px;
+}
