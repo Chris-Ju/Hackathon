@@ -31,9 +31,8 @@ router.post('/', function (req, res) {
   console.log(req.body);
   data.insert(req.body, function(val) {
     if (val) {
-      res.status(200);
       req.session.user = req.body.username;
-      res.redirect('/user');
+      res.status(200);
     } else {
       res.status(404);
     }

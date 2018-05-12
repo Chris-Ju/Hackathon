@@ -255,6 +255,7 @@ function checkAll() {
             statusCode: {
                 200: function() {
                     deleteWarning();
+                    window.location.href = "/user";
                 }
             }
         });
