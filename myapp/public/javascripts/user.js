@@ -1,7 +1,13 @@
 $(function(){
-  $("#left").click(moveOut);
-  $("#right").click(moveOut);
+  $("#left").click(moveOut).hover(showIntroduction,hideIntroduction);
+  $("#right").click(moveOut).hover(showIntroduction, hideIntroduction);
 });
+function showIntroduction() {
+  $(this).next('.intro').css('opacity', 1);
+}
+function hideIntroduction() {
+  $(this).next('.intro').css('opacity', 0);
+}
 function moveOut() {
   $("#left").removeClass("zoomIn").addClass("fadeOutLeft");
   $("#right").removeClass("zoomIn").addClass("fadeOutRight");

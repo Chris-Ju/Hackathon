@@ -413,13 +413,8 @@ body {
   margin-left: 300px;
   margin-top: 200px;
   font-size: 12pt;
+  opacity: 0;
   transition: all 0.3s;
 }
 
-#intro1{
-  width: 500px;
-}
-/*
-#intro2{
-  opacity: 0;
-}*/
+
