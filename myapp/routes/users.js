@@ -32,9 +32,10 @@ router.post('/loginout', function (req, res, next) {
 });
 
 router.post('/insertStory', function (req, res, next) {
-  var user = req.session.user();
+  console.log(req.body);
+  var user = req.session.user;
   var dt = req.body;
-  dt[username] = user;
+  dt.username = user;
   data.insertOneStory(dt, function(val) {
     if(val) {
       res.status(200);
@@ -46,9 +47,10 @@ router.post('/insertStory', function (req, res, next) {
 });
 
 router.post('/insertCandy', function (req, res, next) {
-  var user = req.session.user();
+  console.log(req.body);
+  var user = req.session.user;
   var dt = req.body;
-  dt[username] = user;
+  dt.username = user;
   data.insertOneCandy(dt, function(val) {
     if(val) {
       res.status(200);
@@ -60,7 +62,6 @@ router.post('/insertCandy', function (req, res, next) {
 });
 
 router.post('/findStory', function (req, res, next) {
-  var user = req.session.user();
   data.findOneStory(req.body, function(result) {
     res.status(200).json(result);
     res.end();
@@ -68,7 +69,6 @@ router.post('/findStory', function (req, res, next) {
 });
 
 router.post('/findCandy', function (req, res, next) {
-  var user = req.session.user();
   data.findOneCandy(req.body, function(result) {
     res.status(200).json(result);
     res.end();

@@ -7,7 +7,7 @@ var dataType = "";
 $(function () {
   $("#left").bind('click', clickEvent).bind('mouseenter', showIntroduction).bind('mouseleave', hideIntroduction);
   $("#right").bind('click', clickEvent).bind('mouseenter', showIntroduction).bind('mouseleave', hideIntroduction);
-  $("#confirm").bind('click',submit);
+  $("#confirm").bind('click', submit);
 });
 
 function showIntroduction() {
@@ -76,7 +76,7 @@ function find() {
     dataType: 'jsonp',
     statusCode: {
       200: function (data) {
-        
+
       }
     }
   });
