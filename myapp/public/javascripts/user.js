@@ -134,6 +134,7 @@ function submit() {
       type: 'POST',
       dataType: 'jsonp',
       data: {
+        id: id,
         anonymous: anonymous,
         content: content
       },
