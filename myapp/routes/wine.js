@@ -21,9 +21,9 @@ router.use(session({
 router.get('/', function (req, res, next) {
   if (!!req.session.user) {
     var dt = {};
-    dt[username] = req.session.user;
+    dt.username = req.session.user;
     data.findAllStory(dt, function(result) {
-      res.render('story', {
+      res.render('wine', {
 
       });
     });
