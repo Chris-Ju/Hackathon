@@ -103,7 +103,19 @@ function clickEvent() {
     }, 1000);
   }
 }
-
+function Toast(msg, duration) {
+  duration = isNaN(duration) ? 3000 : duration;
+  var m = $('<div></div>');
+  m.html(msg);
+  m.attr('id', 'toast');
+  m.appendTo('body');
+  setTimeout(function () {
+    m.fadeOut();
+    setTimeout(function () {
+      m.remove();
+    }, 1000);
+  }, duration);
+}
 function find() {
   $.ajax({
     url: '/user/find' + dataType,
@@ -125,10 +137,15 @@ function find() {
 
 function submit() {
   $("#confirm").unbind('click');
-  var anonymous = $("input:checkbox:checked").val();
+  var anonymous = $("#auto").get(0).checked;
   var content = $("#convright").val();
   var random = Math.random();
   if (critical) {
+    if (content.length==0){
+      Toast("您的评论不能为空");
+      $("#confirm").bind('click',submit);
+      return;
+    }    
     $.ajax({
       url: '/user/comment',
       type: 'POST',
@@ -145,6 +162,11 @@ function submit() {
       }
     });
   } else {
+    if (content.length < 10) {
+      Toast("您的故事太短啦");
+      $("#confirm").bind('click', submit);
+      return;
+    }
     $.ajax({
       url: '/user/insert' + dataType,
       type: 'POST',
