@@ -363,7 +363,7 @@ body {
 
 .main {
   position: relative;
-  margin-left: 200px;
+  margin-left: 150px;
 }
 
 .boxes {
@@ -423,16 +423,76 @@ body {
 
 .div3 {
   position: absolute;
+  width: 320px;
+  height: 200px;
+  margin-left: 230px;
+  margin-top: -20px;
 }
 
-.dialeft {
+#myleft{
   position: relative;
-  width: 300px;
+  width: 330px;
   height: 200px;
 }
 
-.candyleft {
+#convleft{
   position: relative;
-  margin-top: -160px;
-  margin-left: 200px;
+  margin-left: 30px;
+  margin-top: -140px;
+  width: 270px;
+}
+
+.div4{
+  position: absolute;
+  width: 320px;
+  height: 200px;
+  margin-left: 580px;
+  margin-top: -20px;
+}
+
+#myright{
+  position: relative;
+  width: 330px;
+  height: 200px;
+}
+
+#convright{
+  position: absolute;
+  margin-left: 30px;
+  margin-top: -150px;
+  width: 250px;
+  height: 100px;
+  word-break: break-all;
+  white-space: nowrap;
+}
+
+#comfirm{
+  position: absolute;
+  padding: 15px;
+  margin-top: 10px;
+  display: block;
+  text-decoration: none;
+  outline: none;
+  line-height: 10px;
+  text-align: center;
+  border-radius: 50px;
+  background: #0096e6;
+  width: 80px;
+  float: left;
+  margin-left: 180px;
+  border: 0;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.automatic{
+  position: absolute;
+  margin-left: 100px;
+  margin-top: 20px;
+}
+
+#autotext{
+  position: relative;
+  margin-left: 20px;
+  margin-top: -20px;
 }

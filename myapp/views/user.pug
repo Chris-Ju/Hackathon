@@ -46,6 +46,7 @@ html
               | 会去寻找让自己的心情好起来的方法，但也不会在持续低落的时候感到过于焦虑。
               br
               | 会敏锐地捕捉到到一丝细微的情绪的病状，也会在踟躇中开口求救，而不是任由糟糕的情绪堆积。
+
         |
         .div2
           #right.boxes.animated
@@ -68,5 +69,22 @@ html
               | 糖果里可能是一个笑话、一句暖心的文字，也可能是一首让人开心的歌...
               
         |
-
+        .div3
+          #dialeft
+            img#myleft(src="images/dialeft.png")
+            p#convleft “欲说还休，欲说还休，却道天凉好个秋。”
+              br
+              | 我们还没学会怎么像成年人一样解决问题，却率先感受到了成年人生活的苦闷。
+              br
+              | 在我们的酒屋里，您可以说出自己的烦恼，现在您可以开始写下您的故事了！
+        |
+        .div4
+          #diaright
+            img#myright(src="images/diaright.png")
+            textarea#convright.text(placeholder='请说出您的故事', autocomplete='off', rows='3', cols='5', wrap='virtual', width="250")
+            .automatic
+              input#auto(type="checkbox")
+              p#autotext 匿名
+            button#comfirm 提交
+        |
 
