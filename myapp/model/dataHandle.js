@@ -85,7 +85,7 @@ function findOneCandy(callback) {
     MongoClient.connect(url, function (err, client) {
         var dbase = client.db('mytestingdb');
         var random = Math.random();
-        dbase.collection('candy').find({"random":{"$lt":random}}).toArray(function (err, result) {
+        dbase.collection('candy').find({}).toArray(function (err, result) {
             client.close();
             callback(result[Math.floor(Math.random() * result.length)]);
         });
@@ -122,6 +122,42 @@ function insertComment(data, callback) {
     });
 }
 
+function findComment(data, callback) {
+    MongoClient.connect(url, function (err, client) {
+        var dbase = client.db('mytestingdb');
+        dbase.collection("comment").find(data).toArray(function (err, result) {
+            client.close();
+            callback(result);
+        });
+    });
+}
+
+function findAllCandy(data, callback) {
+    MongoClient.connect(url, function (err, client) {
+        var dbase = client.db('mytestingdb');
+        var random = Math.random();
+        dbase.collection('candy').find({}).toArray(function (err, result) {
+            client.close();
+            callback(result);
+        });
+    });
+}
+
+
+function findAllStory(data, callback) {
+    MongoClient.connect(url, function (err, client) {
+        var dbase = client.db('mytestingdb');
+        var random = Math.random();
+        dbase.collection('story').find(data).toArray(function (err, result) {
+            client.close();
+            callback(result);
+        });
+    });
+}
+
+
+
+
 exports.insert = insert;
 exports.check = check;
 exports.checkPass = checkPass;
@@ -129,3 +165,7 @@ exports.findOneCandy = findOneCandy;
 exports.findOneStory = findOneStory;
 exports.insertOneCandy = insertOneCandy;
 exports.insertOneStory = insertOneStory;
+exports.insertComment = insertComment;
+exports.findComment = findComment;
+exports.findAllCandy = findAllCandy;
+exports.findAllStory = findAllStory;

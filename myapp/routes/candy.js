@@ -20,7 +20,13 @@ router.use(session({
 /* GET home page. */
 router.get('/', function (req, res, next) {
     if (!!req.session.user) {
-      res.render('candy');
+      var dt = {};
+      dt[username] = req.session.user;
+      data.findAllCandy(dt, function(result) {
+        res.render('candy', {
+          
+        });
+      });
     } else {
       res.render('index');
     }

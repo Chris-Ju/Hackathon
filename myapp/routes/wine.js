@@ -19,11 +19,17 @@ router.use(session({
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    if (!!req.session.user) {
-      res.render('wine');
-    } else {
-      res.render('index');
-    }
+  if (!!req.session.user) {
+    var dt = {};
+    dt[username] = req.session.user;
+    data.findAllStory(dt, function(result) {
+      res.render('story', {
+
+      });
+    });
+  } else {
+    res.render('index');
+  }
 });
 
 module.exports = router;

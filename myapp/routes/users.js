@@ -78,4 +78,17 @@ router.post('/findCandy', function (req, res, next) {
   });
 });
 
+router.post('/comment', function (req, res, next) {
+  var dt = req.body;
+  dt.user = req.session.username;
+  data.insertComment(dt, function(val) {
+      if(val) {
+        res.status(200);
+      } else {
+        res.status(404);
+      }
+      res.end();
+  });
+});
+
 module.exports = router;
