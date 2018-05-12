@@ -20,6 +20,7 @@ router.use(session({
 /* GET home page. */
 router.get('/', function (req, res, next) {
   if (!!req.session.user) {
+    console.log(req.body);
     res.render('otherstory');
   } else {
     res.render('index');
@@ -30,12 +31,22 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
   if (!!req.session.user) {
     var dt = {};
-    dt.username = req.session.user;
     dt.anonymous = "false";
+    dt.username = req.cookies.temp;
     data.findAllStory(dt, function (result) {
       res.status(200).send(result);
       res.end();
     });
+  } else {
+    res.render('index');
+  }
+});
+
+router.post('/cookie', function (req, res, next) {
+  if (!!req.session.user) {
+    res.cookie('temp', req.body.username);
+    res.status(200);
+    res.end();
   } else {
     res.render('index');
   }

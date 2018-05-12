@@ -13,6 +13,8 @@ var regist = require('./routes/regist');
 var user = require('./routes/users');
 var wine = require('./routes/wine');
 var candy = require('./routes/candy');
+var othercandy = require('./routes/othercandy');
+var otherstory = require('./routes/otherstory');
 
 var app = express();
 
@@ -33,6 +35,9 @@ app.use('/regist', regist);
 app.use('/user', user);
 app.use('/wine', wine);
 app.use('/candy', candy);
+app.use('/otherCandy', othercandy);
+app.use('/otherStory', otherstory);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

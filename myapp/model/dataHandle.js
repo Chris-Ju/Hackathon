@@ -184,7 +184,16 @@ function addCommentNumber(data, callback) {
     });
 }
 
-
+function findUser(data, callback) {
+    MongoClient.connect(url, function (err, client) {
+        var dbase = client.db('mytestingdb');
+        var random = Math.random();
+        dbase.collection('user').find(data).toArray(function (err, result) {
+            client.close();
+            callback(result[0]);
+        });
+    });
+}
 
 
 exports.insert = insert;
@@ -199,3 +208,4 @@ exports.findComment = findComment;
 exports.findAllCandy = findAllCandy;
 exports.findAllStory = findAllStory;
 exports.addCommentNumber = addCommentNumber;
+exports.findUser = findUser;

@@ -5,7 +5,7 @@ var sweet = false;
 var dataType = "";
 var critical = false;
 var id;
-
+var username;
 $(function () {
   $(".div1").addClass("zoomIn");
   $(".div2").addClass("zoomIn");
@@ -16,10 +16,9 @@ $(function () {
   $(".exit").bind("click", signOut);
   $(".mywine").bind("click", jumpToMyWine);
   $(".mycandy").bind("click", jumpToMyCandy);
-  $("#antyStar").bind("click", go);
 });
 
-function jumpToHome(){
+function jumpToHome() {
   window.location.href = "/user";
 }
 
@@ -43,11 +42,11 @@ function signOut() {
   });
 }
 
-function showAntyStar(){
+function showAntyStar() {
   $("#antyStar").css('opacity', 1);
 }
 
-function hideAntyStar(){
+function hideAntyStar() {
   $("#antyStar").css('opacity', 0);
 }
 
@@ -117,6 +116,7 @@ function clickEvent() {
     }, 1000);
   }
 }
+
 function Toast(msg, duration) {
   duration = isNaN(duration) ? 3000 : duration;
   var m = $('<div></div>');
@@ -130,6 +130,7 @@ function Toast(msg, duration) {
     }, 1000);
   }, duration);
 }
+
 function find() {
   $.ajax({
     url: '/user/find' + dataType,
@@ -140,11 +141,13 @@ function find() {
         var obj = eval('(' + data.responseText + ')');
         id = obj.random;
         var op = obj.anonymous;
-        if(op == "true") {
+        username = obj.username;
+        if (op == "true") {
+          $("#antyStar").unbind("click");
           hideAntyStar();
-        }
-        else{
+        } else {
           showAntyStar();
+          $("#antyStar").bind("click", go);
         }
         if (dataType == "Story") {
           $("#convleft").html("这是一位酒客的故事：<br>“" + obj.content + "”<br>现在您可以写下您给这位酒客的评论了。");
@@ -162,11 +165,11 @@ function submit() {
   var content = $("#convright").val();
   var random = Math.random();
   if (critical) {
-    if (content.length==0){
+    if (content.length == 0) {
       Toast("您的评论不能为空");
-      $("#confirm").bind('click',submit);
+      $("#confirm").bind('click', submit);
       return;
-    }    
+    }
     $.ajax({
       url: '/user/comment',
       type: 'POST',
@@ -197,7 +200,7 @@ function submit() {
         anonymous: anonymous,
         content: content,
         random: random,
-        date: Date().substr(0,24)
+        date: Date().substr(0, 24)
       },
       statusCode: {
         200: function () {
@@ -211,16 +214,16 @@ function submit() {
 function go() {
   $("#antyStar").unbind('click');
   $.ajax({
-      url: '/other' + dataType,
-      type: 'POST',
-      dataType: 'jsonp',
-      data: {
-        random: id
-      },
-      statusCode: {
-        200: function () {
-          window.location.href = "/other";
-        }
+    url: '/other' + dataType + '/cookie',
+    type: 'POST',
+    dataType: 'jsonp',
+    data: {
+      username : username
+    },
+    statusCode: {
+      200: function () {
+        window.location.href = "/other" + dataType;
       }
-    });
+    }
+  });
 }
