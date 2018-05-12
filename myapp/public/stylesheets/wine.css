@@ -152,6 +152,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-top: -390px;
+  display: none;  
 }
 
 .divList{
@@ -172,5 +173,5 @@ body {
 
 .star {
   display: none;
-  margin-top: 20px;
+  margin-top: 30px;
 }
