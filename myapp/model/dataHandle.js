@@ -59,11 +59,18 @@ function findOneStory(callback) {
     MongoClient.connect(url, function (err, client) {
         var dbase = client.db('mytestingdb');
         var random = Math.random();
-        var story = dbase.collection('story').findOne({"random":{"$lt":random}});
-        if (story == null) {
-            story = dbase.collection('story').findOne({"random":{"$gte":random}});
-        }
-        callback(story);
+        dbase.collection('story').findOne({"random":{"$lt":random}}).toArray(function (err, result) {
+            if (result.length == 0) {
+                dbase.collection('story').findOne({"random":{"$gte":random}}).toArray(function (err, result) {
+                    client.close();
+                    callback(result);
+                });
+                
+            } else {
+                client.close();
+                callback(result);            
+            }
+        });
     });
 }
 
@@ -86,11 +93,18 @@ function findOneCandy(callback) {
     MongoClient.connect(url, function (err, client) {
         var dbase = client.db('mytestingdb');
         var random = Math.random();
-        var candy = dbase.collection('candy').findOne({"random":{"$lt":random}});
-        if (candy == null) {
-            candy = dbase.collection('candy').findOne({"random":{"$gte":random}});
-        }
-        callback(candy);
+        dbase.collection('candy').findOne({"random":{"$lt":random}}).toArray(function (err, result) {
+            if (result.length == 0) {
+                dbase.collection('candy').findOne({"random":{"$gte":random}}).toArray(function (err, result) {
+                    client.close();
+                    callback(result);
+                });
+                
+            } else {
+                client.close();
+                callback(result);
+            }
+        });
     });
 }
 
