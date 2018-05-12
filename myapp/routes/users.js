@@ -37,6 +37,7 @@ router.post('/insertStory', function (req, res, next) {
   var user = req.session.user;
   var dt = req.body;
   dt.username = user;
+  dt.commentNumber = 0;
   data.insertOneStory(dt, function(val) {
     if(val) {
       res.status(200);
@@ -52,6 +53,7 @@ router.post('/insertCandy', function (req, res, next) {
   var user = req.session.user;
   var dt = req.body;
   dt.username = user;
+  dt.commentNumber = 0;
   data.insertOneCandy(dt, function(val) {
     if(val) {
       res.status(200);
@@ -83,7 +85,11 @@ router.post('/comment', function (req, res, next) {
   dt.user = req.session.username;
   data.insertComment(dt, function(val) {
       if(val) {
-        res.status(200);
+        var dtm = {};
+        dtm.random = dt.id;
+        data.addCommentNumber(dtm, function() {
+          res.status(200);
+        });
       } else {
         res.status(404);
       }
