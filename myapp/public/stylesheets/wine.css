@@ -79,6 +79,7 @@ body {
   height:389px;
   left: 0;
   right: 0;
+  text-align: center;
 }
 
 .mr_zhe_i h1 {
@@ -167,4 +168,9 @@ body {
 .commendText{
   margin-left: 40px;
   margin-top: -70px;
+}
+
+.star {
+  display: none;
+  margin-top: 20px;
 }
