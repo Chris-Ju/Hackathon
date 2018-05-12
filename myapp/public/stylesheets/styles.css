@@ -1,0 +1,355 @@
+/**Variables 变量**/
+
+/**背景图片**/
+
+.fixedTop {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.fixedBottom {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+/**圆角*/
+
+/* Mixin 四边圆角 */
+
+/**boxS*/
+
+.box_S {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+body {
+  color: #ffffff;
+  font-size: 14px;
+  font-family: tahoma, "Microsoft YaHei", 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif;
+}
+
+/**Nested Rules  嵌套的规则**/
+
+.bordered {
+  border-bottom: solid 1px #e8e8e8;
+}
+
+.borderTop {
+  border-top: solid 1px #e8e8e8;
+}
+
+.blockMid {
+  display: block;
+  margin: 0 auto;
+}
+
+.prelative {
+  position: relative;
+}
+
+.pabsolute {
+  position: absolute;
+}
+
+.content {
+  padding: 0 4%;
+}
+
+.pright {
+  right: 4%;
+}
+
+.bgcolor {
+  background: #fa5527;
+}
+
+.white {
+  color: #ffffff;
+}
+
+.content {
+  width: 1144px;
+  margin: 0 auto;
+}
+
+.input_wrap_box {
+  background: #0f1034;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  width: 770px;
+  height: 50px;
+  line-height: 50px;
+  margin-top: 46px;
+  position: relative;
+}
+
+.input_wrap_box .input_cover {
+  text-align: center;
+  line-height: 48px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 1px;
+  z-index: 3;
+  background: #0f1034;
+  border-radius: 27px;
+  -webkit-border-radius: 27px;
+  -moz-border-radius: 27px;
+  /*pointer-events:none;*/
+}
+
+.input_wrap_box .input_cover .num {
+  color: #ff0000;
+}
+
+.input_wrap_box .input_cover .icons {
+  color: #9a99a4;
+  padding-left: 10px;
+}
+
+.input_wrap_box #sercHead {
+  background: #0f1034;
+  width: 100%;
+  display: block;
+  text-align: center;
+  line-height: 48px;
+  border: 1px solid #1d2556;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  color: #ffffff;
+}
+
+.input_wrap_box #sercHead.cur {
+  border: 1px solid #6974b3;
+}
+
+.iconlogo {
+  display: block;
+  margin: 0 auto;
+  padding: 45px 0;
+}
+
+body {
+  margin: 0 auto;
+}
+
+#warning {
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.large-header {
+  position: relative;
+  width: 100%;
+  background: #333;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  z-index: 1;
+}
+
+.demo-1 .large-header {
+  background-image: url('../images/demo-1-bg.jpg');
+}
+
+.logo_box {
+  width: 400px;
+  height: 200px;
+  padding: 35px;
+  color: #EEE;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -200px;
+  margin-top: -250px;
+}
+
+.logo_box h3 {
+  text-align: center;
+  height: 40px;
+  font: 40px "microsoft yahei", Helvetica, Tahoma, Arial, "Microsoft jhengHei", sans-serif;
+  color: #FFFFFF;
+  line-height: 20px;
+  padding: 0 0 35px 0;
+}
+
+.forms {
+  width: 280px;
+  height: 485px;
+}
+
+.logon_inof {
+  width: 100%;
+  min-height: 450px;
+  padding-top: 35px;
+  position: relative;
+}
+
+.input_outer {
+  height: 46px;
+  padding: 0 5px;
+  margin-bottom: 20px;
+  border-radius: 50px;
+  position: relative;
+  border: rgba(255, 255, 255, 0.2) 2px solid !important;
+}
+
+.u_user {
+  width: 25px;
+  height: 25px;
+  background: url(../images/login_ico.png);
+  background-position: -125px 0;
+  position: absolute;
+  margin: 10px 13px;
+}
+
+.u_password {
+  width: 25px;
+  height: 25px;
+  background-image: url(../images/login_ico.png);
+  background-position: -125px -34px;
+  position: absolute;
+  margin: 10px 13px;
+}
+
+.pass-box i {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  background-image: none;
+  background-size: 200% 200%;
+  background-position: center;
+  display: inline-block;
+}
+
+.r_password {
+  width: 25px;
+  height: 25px;
+  background-image: url(../images/login_ico.png);
+  background-position: 0 -200px;
+  position: absolute;
+  margin: 10px 13px;
+  transition: 0.3s;
+}
+
+.u_phone {
+  width: 25px;
+  height: 32px;
+  background-image: url(../images/login_ico.png);
+  background-position: -85px -108px;
+  position: absolute;
+  margin: 10px 13px;
+}
+
+.u_email {
+  width: 25px;
+  height: 25px;
+  background-image: url(../images/login_ico.png);
+  background-position: -85px 3px;
+  position: absolute;
+  margin: 10px 13px;
+}
+
+.u_warning {
+  width: 25px;
+  height: 25px;
+  background-image: url(../images/login_ico.png);
+  background-position: 0 -200px;
+  position: absolute;
+  margin: 10px 13px;
+}
+
+.l-login {
+  position: absolute;
+  z-index: 1;
+  left: 50px;
+  top: 0;
+  height: 46px;
+  font: 14px "microsoft yahei", Helvetica, Tahoma, Arial, "Microsoft jhengHei";
+  line-height: 46px;
+}
+
+.text {
+  width: 300px;
+  height: 46px;
+  outline: none;
+  display: inline-block;
+  font: 14px "microsoft yahei", Helvetica, Tahoma, Arial, "Microsoft jhengHei";
+  margin-left: 50px;
+  border: none;
+  background: none;
+  line-height: 46px;
+  color: #FFFFFF !important;
+  position: absolute;
+  z-index: 2;
+}
+
+.submit {
+  padding: 15px;
+  margin-top: 40px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+  outline: none;
+  line-height: 20px;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 50px;
+  background: #0096e6;
+  width: 150px;
+  float: left;
+  margin-left: 30px;
+  border: 0;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+#signout {
+  padding: 15px;
+  margin-top: 40px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+  outline: none;
+  line-height: 20px;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 50px;
+  background: #0096e6;
+  width: 150px;
+  margin-left: 120px;
+  border: 0;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+/*@media screen and (max-width:359px){
+  body{ font-size: 12px;}
+}
+@media only screen and (min-width:360px)and(max-width:639px ){
+  body{ font-size: 13px;}
+}
+@media screen and (min-width:640px)and(max-width:749px ){
+  body{ font-size: 16px;}
+}
+@media screen and (min-width:750px){
+  body{ font-size: 24px;}
+}
+*/
