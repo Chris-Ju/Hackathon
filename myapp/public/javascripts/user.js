@@ -12,9 +12,9 @@ $(function () {
   $("#left").bind('click', clickEvent).bind('mouseenter', showIntroduction).bind('mouseleave', hideIntroduction);
   $("#right").bind('click', clickEvent).bind('mouseenter', showIntroduction).bind('mouseleave', hideIntroduction);
   $("#confirm").bind('click', submit);
-  $("#exit").bind("click", signOut);
-  $("#mywine").bind("click", jumpToMyWine);
-  $("#mycandy").bind("click", jumpToMyCandy);
+  $(".exit").bind("click", signOut);
+  $(".mywine").bind("click", jumpToMyWine);
+  $(".mycandy").bind("click", jumpToMyCandy);
 });
 
 function jumpToMyWine() {
