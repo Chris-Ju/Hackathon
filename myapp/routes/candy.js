@@ -19,17 +19,37 @@ router.use(session({
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
+  if (!!req.session.user) {
+    res.render('candy');
+  } else {
+    res.render('index');
+  }
+});
+
+router.post('/', function (req, res, next) {
     if (!!req.session.user) {
       var dt = {};
       dt.username = req.session.user;
       data.findAllCandy(dt, function(result) {
-        res.render('candy', {
-
-        });
+        res.status(200).send(result);
+        res.end();
       });
     } else {
       res.render('index');
     }
+});
+
+router.post('/comment', function (req, res, next) {
+  if (!!req.session.user) {
+    var dt = {};
+    dt.id = req.body.random;
+    data.findComment(dt, function(result) {
+      res.status(200).send(result);
+      res.end();
+    });
+  } else {
+    res.render('index');
+  }
 });
 
 module.exports = router;
