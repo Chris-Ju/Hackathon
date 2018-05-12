@@ -417,9 +417,9 @@ body {
 }
 
 #intro1{
-  opacity: 0;
+  width: 500px;
 }
-
+/*
 #intro2{
   opacity: 0;
-}
+}*/
