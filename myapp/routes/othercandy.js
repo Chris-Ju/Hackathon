@@ -20,9 +20,12 @@ router.use(session({
 /* GET home page. */
 router.get('/', function (req, res, next) {
   if (!!req.session.user) {
-    console.log(req.body);
-    res.render('othercandy');
-    //res.cookie('username', req.body)
+    if (!!req.cookies.temp) {
+      console.log(req.body);
+      res.render('othercandy');
+    } else {
+      res.redirect('/user');
+    }
   } else {
     res.render('index');
   }
@@ -30,13 +33,15 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
   if (!!req.session.user) {
-    var dt = {};
-    dt.anonymous = "false";
-    dt.username = req.cookies.temp;
-    data.findAllCandy(dt, function (result) {
-      res.status(200).send(result);
-      res.end();
-    });
+    if (!!req.cookies.temp) {
+      var dt = {};
+      dt.anonymous = "false";
+      dt.username = req.cookies.temp;
+      data.findAllCandy(dt, function (result) {
+        res.status(200).send(result);
+        res.end();
+      });
+    }
   } else {
     res.render('index');
   }
@@ -44,7 +49,7 @@ router.post('/', function (req, res, next) {
 
 router.post('/cookie', function (req, res, next) {
   if (!!req.session.user) {
-    res.cookie('temp', req.body.username);
+    res.cookie('temp', req.body.username, { maxAge : 2000});
     res.status(200);
     res.end();
   } else {
