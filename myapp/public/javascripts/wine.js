@@ -1,5 +1,25 @@
 $(document).ready(function () {
-
+  $.ajax({
+    url: '/wine',
+    type: 'POST',
+    statusCode: {
+      200: function (data) {
+        for (var i = 0; i < data.length; i++) {
+          var obj = data[i];
+          var content = obj.content;
+          var date = obj.date;
+          var commentNumber = obj.commentNumber;
+          var li = $("<li style='float:left;width:300px;'><div class='mr_zhe'><div class='mr_zhe_i' style='display:block'><p class='story'>" + content +
+            "</p><div class='mr_zhe_p'><h3><span>" + date +
+            "</span>评论数（" + commentNumber +
+            "）</h3></div></div><div class='mr_zhe_hover' style='top:190px;display:none'><h1/><div class='mr_zhe_p'><h3><span>" + date +
+            "</span>评论数（" + commentNumber +
+            "）</h3></div></div></div></li>")
+          $("#mr_fu").append(li);
+        }
+      }
+    }
+  });
   $(function () {
     $(".myhome").bind("click", jumpToHome);
     $(".exit").bind("click", signOut);
@@ -7,7 +27,7 @@ $(document).ready(function () {
     $(".mycandy").bind("click", jumpToMyCandy);
   });
 
-  function jumpToHome(){
+  function jumpToHome() {
     window.location.href = "/user";
   }
 
@@ -46,14 +66,23 @@ $(document).ready(function () {
   $("li").mouseout(function (e) {
     if ((e.pageX < $(this).offset().left || e.pageX > ($(this).offset().left + $(this).width())) || (e.pageY < $(this).offset().top || e.pageY > ($(this).offset().top + $(this).height()))) {
       $(this).find('.mr_zhe_i').show();
-      $(this).find('.mr_zhe_hover').hide().stop().animate({ top: '190px' }, { queue: false, duration: 190 });
+      $(this).find('.mr_zhe_hover').hide().stop().animate({
+        top: '190px'
+      }, {
+        queue: false,
+        duration: 190
+      });
       return false;
     }
-
   });
   $('.mr_zhe').mouseover(function (event) {
     $(this).find('.mr_zhe_i').hide();
-    $(this).find('.mr_zhe_hover').show().stop().animate({ top: '190px' }, { queue: false, duration: 190 });
+    $(this).find('.mr_zhe_hover').show().stop().animate({
+      top: '190px'
+    }, {
+      queue: false,
+      duration: 190
+    });
     return false;
   });
 
