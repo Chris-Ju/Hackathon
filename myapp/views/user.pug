@@ -76,7 +76,7 @@ html
               | 糖果里可能是一个笑话、一句暖心的文字，也可能是一首让人开心的歌...
               
         |
-        .div3
+        .div3.animated
           #dialeft
             img#myleft(src="images/dialeft.png")
             p#convleft “欲说还休，欲说还休，却道天凉好个秋。”
@@ -85,14 +85,14 @@ html
               br
               | 在我们的酒屋里，您可以说出自己的烦恼，现在您可以开始写下您的故事了！
         |
-        .div4
+        .div4.animated
           #diaright
             img#myright(src="images/diaright.png")
             textarea#convright.text(placeholder='请说出您的故事', autocomplete='off', rows='3', cols='5', wrap='virtual', width="250")
             .automatic
               input#auto(type="checkbox")
               p#autotext 匿名
-            button#comfirm 提交
+            button#confirm 提交
         |
     |
 

@@ -427,6 +427,7 @@ body {
   height: 200px;
   margin-left: 230px;
   margin-top: -20px;
+  display: none;
 }
 
 #myleft{
@@ -448,6 +449,7 @@ body {
   height: 200px;
   margin-left: 580px;
   margin-top: -20px;
+  display: none;
 }
 
 #myright{
@@ -466,7 +468,7 @@ body {
   white-space: nowrap;
 }
 
-#comfirm{
+#confirm{
   position: absolute;
   padding: 15px;
   margin-top: 10px;

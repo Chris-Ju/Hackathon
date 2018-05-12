@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-
+var path = require('path');
+var bodyParser = require('body-parser');
+var data = require('../model/dataHandle');
 
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
@@ -27,6 +29,50 @@ router.get('/', function (req, res, next) {
 router.post('/loginout', function (req, res, next) {
   req.session.destroy();
   res.redirect('/');
-})
+});
+
+router.post('/insertStory', function (req, res, next) {
+  console.log(req.body);
+  var user = req.session.user;
+  var dt = req.body;
+  dt.username = user;
+  data.insertOneStory(dt, function(val) {
+    if(val) {
+      res.status(200);
+    } else {
+      res.status(404);
+    }
+    res.end();
+  });
+});
+
+router.post('/insertCandy', function (req, res, next) {
+  console.log(req.body);
+  var user = req.session.user;
+  var dt = req.body;
+  dt.username = user;
+  data.insertOneCandy(dt, function(val) {
+    if(val) {
+      res.status(200);
+    } else {
+      res.status(404);
+    }
+    res.end();
+  });
+});
+
+router.post('/findStory', function (req, res, next) {
+  data.findOneStory(req.body, function(result) {
+    res.status(200).json(result);
+    res.end();
+  });
+});
+
+router.post('/findCandy', function (req, res, next) {
+  data.findOneCandy(req.body, function(result) {
+    res.status(200).json(result);
+    res.end();
+  });
+});
 
 module.exports = router;
