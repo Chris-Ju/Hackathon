@@ -16,6 +16,7 @@ var candy = require('./routes/candy');
 var othercandy = require('./routes/othercandy');
 var otherstory = require('./routes/otherstory');
 var signin = require('./routes/signin');
+var ajaxserver = require('./routes/ajaxserver');
 
 var app = express();
 
@@ -41,6 +42,7 @@ app.use('/candy', candy);
 app.use('/otherCandy', othercandy);
 app.use('/otherStory', otherstory);
 app.use('/signin', signin);
+app.use('/ajaxserver', ajaxserver);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
