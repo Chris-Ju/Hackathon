@@ -1,3 +1,5 @@
+var username;
+
 $(document).ready(function () {
   $.ajax({
     url: '/wine',
@@ -10,7 +12,7 @@ $(document).ready(function () {
           var date = obj.date;
           var commentNumber = obj.commentNumber;
           var random = obj.random;
-
+          username = obj.username;
           var li = $("<li id='" + random +
             "' style='float:left;width:300px;'><div class='mr_zhe'><img src='images/star_y.png' class='star animated'/><div class='mr_zhe_i' style='display:block'><p class='story'>" + content +
             "</p><div class='mr_zhe_p'><h3><span>" + date +
@@ -42,8 +44,14 @@ $(document).ready(function () {
                       var obj = arr[i];
                       var content = obj.content;
                       var date = obj.date;
+                      var op = obj.anonymous;
+                      var star = "";
+                      username = obj.username;
+                      if(op == "true"){
+                        star = "<img src=\"images/star_y.png\" class=\"anoyStar\">";
+                      }
                       var li = $('<li class="divList"><img src="images/dialeft.png" class="commendImg"/><p class= "commendText">' +
-                        content + '</p ><p class="dateTime">' + date + '</p></li>');
+                        content + '</p ><p class="dateTime">' + date + '</p>' + star + '</li>');
                       ul.append(li);
                     }
                   }, 1000);

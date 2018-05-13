@@ -181,3 +181,10 @@ body {
   font-size: 10px;
   margin-left: 190px;
 }
+
+.anoyStar{
+  position: relative;
+  margin-left: -100px;
+  margin-top: -20px;
+  cursor: pointer;
+}
