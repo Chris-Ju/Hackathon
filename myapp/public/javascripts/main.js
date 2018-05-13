@@ -1,141 +1,188 @@
-jQuery(document).ready(function($){
-	function morphDropdown( element ) {
-		this.element = element;
-		this.mainNavigation = this.element.find('.main-nav');
-		this.mainNavigationItems = this.mainNavigation.find('.has-dropdown');
-		this.dropdownList = this.element.find('.dropdown-list');
-		this.dropdownWrappers = this.dropdownList.find('.dropdown');
-		this.dropdownItems = this.dropdownList.find('.content');
-		this.dropdownBg = this.dropdownList.find('.bg-layer');
-		this.mq = this.checkMq();
-		this.bindEvents();
-	}
+"use strict";
+/* 0. Initialization */
+// Avoid `console` errors in browsers that lack a console.
+(function() {
+    var method;
+    var noop = function () {};
+    var methods = [
+        'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+        'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+        'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+        'timeStamp', 'trace', 'warn'
+    ];
+    var length = methods.length;
+    var console = (window.console = window.console || {});
 
-	morphDropdown.prototype.checkMq = function() {
-		//check screen size
-		var self = this;
-		return window.getComputedStyle(self.element.get(0), '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, "").split(', ');
-	};
+    while (length--) {
+        method = methods[length];
 
-	morphDropdown.prototype.bindEvents = function() {
-		var self = this;
-		//hover over an item in the main navigation
-		this.mainNavigationItems.mouseenter(function(event){
-			//hover over one of the nav items -> show dropdown
-			self.showDropdown($(this));
-		}).mouseleave(function(){
-			setTimeout(function(){
-				//if not hovering over a nav item or a dropdown -> hide dropdown
-				if( self.mainNavigation.find('.has-dropdown:hover').length == 0 && self.element.find('.dropdown-list:hover').length == 0 ) self.hideDropdown();
-			}, 50);
-		});
-		
-		//hover over the dropdown
-		this.dropdownList.mouseleave(function(){
-			setTimeout(function(){
-				//if not hovering over a dropdown or a nav item -> hide dropdown
-				(self.mainNavigation.find('.has-dropdown:hover').length == 0 && self.element.find('.dropdown-list:hover').length == 0 ) && self.hideDropdown();
-			}, 50);
-		});
+        // Only stub undefined methods.
+        if (!console[method]) {
+            console[method] = noop;
+        }
+    }
+}());
 
-		//click on an item in the main navigation -> open a dropdown on a touch device
-		this.mainNavigationItems.on('touchstart', function(event){
-			var selectedDropdown = self.dropdownList.find('#'+$(this).data('content'));
-			if( !self.element.hasClass('is-dropdown-visible') || !selectedDropdown.hasClass('active') ) {
-				event.preventDefault();
-				self.showDropdown($(this));
-			}
-		});
-
-		//on small screens, open navigation clicking on the menu icon
-		this.element.on('click', '.nav-trigger', function(event){
-			event.preventDefault();
-			self.element.toggleClass('nav-open');
-		});
-	};
-
-	morphDropdown.prototype.showDropdown = function(item) {
-		this.mq = this.checkMq();
-		if( this.mq == 'desktop') {
-			var self = this;
-			var selectedDropdown = this.dropdownList.find('#'+item.data('content')),
-				selectedDropdownHeight = selectedDropdown.innerHeight(),
-				selectedDropdownWidth = selectedDropdown.children('.content').innerWidth(),
-				selectedDropdownLeft = item.offset().left + item.innerWidth()/2 - selectedDropdownWidth/2;
-
-			//update dropdown position and size
-			this.updateDropdown(selectedDropdown, parseInt(selectedDropdownHeight), selectedDropdownWidth, parseInt(selectedDropdownLeft));
-			//add active class to the proper dropdown item
-			this.element.find('.active').removeClass('active');
-			selectedDropdown.addClass('active').removeClass('move-left move-right').prevAll().addClass('move-left').end().nextAll().addClass('move-right');
-			item.addClass('active');
-			//show the dropdown wrapper if not visible yet
-			if( !this.element.hasClass('is-dropdown-visible') ) {
-				setTimeout(function(){
-					self.element.addClass('is-dropdown-visible');
-				}, 10);
-			}
-		}
-	};
-
-	morphDropdown.prototype.updateDropdown = function(dropdownItem, height, width, left) {
-		this.dropdownList.css({
-		    '-moz-transform': 'translateX(' + left + 'px)',
-		    '-webkit-transform': 'translateX(' + left + 'px)',
-			'-ms-transform': 'translateX(' + left + 'px)',
-			'-o-transform': 'translateX(' + left + 'px)',
-			'transform': 'translateX(' + left + 'px)',
-			'width': width+'px',
-			'height': height+'px'
-		});
-
-		this.dropdownBg.css({
-			'-moz-transform': 'scaleX(' + width + ') scaleY(' + height + ')',
-		    '-webkit-transform': 'scaleX(' + width + ') scaleY(' + height + ')',
-			'-ms-transform': 'scaleX(' + width + ') scaleY(' + height + ')',
-			'-o-transform': 'scaleX(' + width + ') scaleY(' + height + ')',
-			'transform': 'scaleX(' + width + ') scaleY(' + height + ')'
-		});
-	};
-
-	morphDropdown.prototype.hideDropdown = function() {
-		this.mq = this.checkMq();
-		if( this.mq == 'desktop') {
-			this.element.removeClass('is-dropdown-visible').find('.active').removeClass('active').end().find('.move-left').removeClass('move-left').end().find('.move-right').removeClass('move-right');
-		}
-	};
-
-	morphDropdown.prototype.resetDropdown = function() {
-		this.mq = this.checkMq();
-		if( this.mq == 'mobile') {
-			this.dropdownList.removeAttr('style');
-		}
-	};
-
-	var morphDropdowns = [];
-	if( $('.cd-morph-dropdown').length > 0 ) {
-		$('.cd-morph-dropdown').each(function(){
-			//create a morphDropdown object for each .cd-morph-dropdown
-			morphDropdowns.push(new morphDropdown($(this)));
-		});
-
-		var resizing = false;
-
-		//on resize, reset dropdown style property
-		updateDropdownPosition();
-		$(window).on('resize', function(){
-			if( !resizing ) {
-				resizing =  true;
-				(!window.requestAnimationFrame) ? setTimeout(updateDropdownPosition, 300) : window.requestAnimationFrame(updateDropdownPosition);
-			}
-		});
-
-		function updateDropdownPosition() {
-			morphDropdowns.forEach(function(element){
-				element.resetDropdown();
-			});
-
-			resizing = false;
-		};
-	}
+// Get height on Window resized
+$(window).on('resize',function(){
+    var slideHeight = $('.slick-track').innerHeight();
+	return false;
 });
+
+
+// Smooth scroll <a> links 
+var $root = $('html, body');
+$('a.s-scroll').on('click',function() {
+    var href = $.attr(this, 'href');
+    $root.animate({
+        scrollTop: $(href).offset().top
+    }, 500, function () {
+        window.location.hash = href;
+    });
+    return false;
+});
+
+
+// Page Loader : hide loader when all are loaded
+$(window).load(function(){
+    $('#page-loader').addClass('hidden');
+});
+
+
+/* 1. Clock attribute */
+
+var dateReadableText = 'Upcoming date';
+    if($('.site-config').attr('data-date-readable') && ($('.site-config').attr('data-date-readable') != '')){
+        $('.timeout-day').text('');
+        dateReadableText = $('.site-config').attr('data-date-readable');        
+        $('.timeout-day').text(dateReadableText);
+    }
+$('.clock-countdown').downCount({
+    date: $('.site-config').attr('data-date'),
+    offset: +10
+}, function () {
+    //callback here if finished
+    //alert('YES, done!');
+    var zerodayText = 'An upcoming date';
+    if($('.site-config').attr('data-zeroday-text') && ($('.site-config').attr('data-zeroday-text') != '')){
+        $('.timeout-day').text('');
+        zerodayText = $('.site-config').attr('data-zeroday-text'); 
+    }
+    $('.timeout-day').text(zerodayText);
+});
+
+/* Second */
+$(function() {
+	$("#second-knob").knob();
+});
+
+
+/* 2. Background for page / section */
+
+var background = '#ccc';
+var backgroundMask = 'rgba(255,255,255,0.92)';
+var backgroundVideoUrl = 'none';
+
+/* Background image as data attribut */
+var list = $('.bg-img');
+
+for (var i = 0; i < list.length; i++) {
+	var src = list[i].getAttribute('data-image-src');
+	list[i].style.backgroundImage = "url('" + src + "')";
+	list[i].style.backgroundRepeat = "no-repeat";
+	list[i].style.backgroundPosition = "center";
+	list[i].style.backgroundSize = "cover";
+}
+
+/* Background color as data attribut */
+var list = $('.bg-color');
+for (var i = 0; i < list.length; i++) {
+	var src = list[i].getAttribute('data-bgcolor');
+	list[i].style.backgroundColor = src;
+}
+
+/* Background slide show */
+var imageList = $('.slide-show .img');
+var imageSlides = [];
+for (var i = 0; i < imageList.length; i++) {
+	var src = imageList[i].getAttribute('data-src');
+	imageSlides.push({src: src});
+}
+$(function() {
+    $('.slide-show').vegas({
+        delay: 5000,
+        shuffle: true,
+        slides: imageSlides,
+    	//transition: [ 'zoomOut', 'burn' ],
+		animation: [ 'kenburnsUp', 'kenburnsDown', 'kenburnsLeft', 'kenburnsRight' ]
+    });
+});
+
+/* Static video background **/
+$(function(){
+	// Helper function to Fill and Center the HTML5 Video
+	$('.video-container video, .video-container object').maximage('maxcover');
+});
+/** youtube / vimeo background */
+$(function(){
+    if(backgroundVideoUrl != 'none'){
+        
+        //disable video background for smallscreen
+        if($(window).width() > 640){
+          $.okvideo({ source: backgroundVideoUrl,
+                    adproof: true
+                    });
+        }
+    }
+});
+
+/* 3. Slide */
+var isSlide = false;
+var slideElem = $('.slide');
+var arrowElem = $('.p-footer .arrow-d');
+var pageElem = $('.page');
+/** Init fullpage.js */
+$(document).ready(function() {
+    $('#mainpage').fullpage({
+		menu: '#qmenu',
+		anchors: ['home', 'when', 'register', 'about-us', 'contact'],
+//        verticalCentered: false,
+//        resize : false,
+//		responsive: 900,
+		scrollOverflow: true,
+        css3: false,
+        navigation: true,
+		onLeave: function(index, nextIndex, direction){
+			arrowElem.addClass('gone');
+			pageElem.addClass('transition');
+//			$('.active').removeClass('transition');
+			slideElem.removeClass('transition');
+			isSlide = false;
+		},
+        afterLoad: function(anchorLink, index){
+			arrowElem.removeClass('gone');
+			pageElem.removeClass('transition');
+			if(isSlide){
+				slideElem.removeClass('transition');
+			}
+		},
+		afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
+			slideElem.removeClass('transition');
+			isSlide = true;
+//			$('.slide').addClass('transition');
+        },
+		onSlideLeave: function( anchorLink, index, slideIndex, direction){
+//			$('.slide').removeClass('transition');
+			if(isSlide){
+				slideElem.addClass('transition');
+			}
+        },
+        afterRender: function(){}
+    });
+});
+
+
+/* Background slide */
+
+
+/* END OF Page Loader : hide loader when all are loaded */

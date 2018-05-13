@@ -1,0 +1,46 @@
+BIENTOT is a responsive “coming soon HTML5” landing page template. 
+<br>
+It was designed to be mobile friendly. 
+<br>
+This template was built for those who want minimalist coming soon page, and for those who want to display company information until their website is complete. 
+<br>
+<br>
+<i>
+tags : coming soon, cooking, creative, jquery, minimalist, photography, presto, responsive, studio, under construction, video, en cours de construction</i>
+
+<br>
+<br>
+Features:
+<br>
+<ul>
+<li>Creative</li>
+<li>Beauiful clock</li>
+<li>Video as background</li>
+<li>Slideshow pictures as background</li>
+<li>One Page / Landing page</li>
+<li>JavaScript + CSS3 Animation</li>
+<li>Clean,  Simple and Minimalist</li>
+<li>Responsive </li>
+<li>AJAX Subscription Form – Native, PHP and Mailchimp </li>
+<li>Contact Form</li>
+<li>Valid HTML5 / CSS3 </li>
+<li>Well documented HTML and CSS files</li>
+<li>Multiple sample layouts Included</li>
+<li>Multi-Browser Support</li>
+
+</ul>
+Default style :
+<img src="http://highhay.com/demos/bientot/screenshotpict/default.jpeg" alt=''style2">
+Alternative styles :
+<img src="http://highhay.com/demos/bientot/screenshotpict/clock.jpeg" alt=''style2">
+<hr>
+<br>
+<ul>
+<li>Updates :</li>
+<li>V 1.0.1 : Initial release</li>
+</ul>
+<br>
+If you like this template, please share and rate it. Thank you.
+<br>
+You may also like my other template :
+
