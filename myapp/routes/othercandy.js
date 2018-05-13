@@ -22,7 +22,7 @@ router.get('/', function (req, res, next) {
   if (!!req.session.user) {
     if (!!req.cookies.temp) {
       console.log(req.body);
-      res.render('othercandy');
+      res.render('otherCandy');
     } else {
       res.redirect('/user');
     }
@@ -38,7 +38,7 @@ router.post('/', function (req, res, next) {
       dt.anonymous = "false";
       dt.username = req.cookies.temp;
       console.log(dt);
-      data.findAllStory(dt, function (result) {
+      data.findAllCandy(dt, function (result) {
         res.status(200).send(result);
         res.end();
       });

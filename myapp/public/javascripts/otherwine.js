@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $.ajax({
-    url: '/otherwine',
+    url: '/otherstory',
     type: 'POST',
     statusCode: {
       200: function (data) {

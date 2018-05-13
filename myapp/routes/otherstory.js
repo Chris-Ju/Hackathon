@@ -22,7 +22,7 @@ router.get('/', function (req, res, next) {
   if (!!req.session.user) {
     if (!!req.cookies.temp) {
       console.log(req.body);
-      res.render('othercandy');
+      res.render('otherStory');
     } else {
       res.redirect('/user');
     }

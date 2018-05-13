@@ -164,20 +164,16 @@ function findAllStory(data, callback) {
 function addCommentNumber(data, callback) {
     MongoClient.connect(url, function (err, client) {
         var dbase = client.db('mytestingdb');
-        try {
-
-            dbase.collection('story').update(data, {
-                $inc: {
-                    commentNumber: 1
-                }
-            });
-        } catch (e) {
-            dbase.collection('candy').update(data, {
-                $inc: {
-                    commentNumber: 1
-                }
-            });
-        }
+        dbase.collection('story').update(data, {
+            $inc: {
+                commentNumber: 1
+            }
+        });
+        dbase.collection('candy').update(data, {
+            $inc: {
+                commentNumber: 1
+            }
+        });
         callback();
     });
 }

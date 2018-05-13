@@ -21,6 +21,7 @@ $(document).ready(function () {
           $("#mr_fu").append(li);
         }
         $('li').bind('click', function () {
+          $(this).unbind('click');
           var random = $(this).attr('id');
           $.ajax({
             url: '/wine/comment',
