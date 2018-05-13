@@ -38,7 +38,8 @@ router.post('/', function (req, res, next) {
       var dt = {};
       dt.anonymous = "false";
       dt.username = req.cookies.temp;
-      data.findAllCandy(dt, function (result) {
+      console.log(dt);
+      data.findAllStory(dt, function (result) {
         res.status(200).send(result);
         res.end();
       });
@@ -50,7 +51,7 @@ router.post('/', function (req, res, next) {
 
 router.post('/cookie', function (req, res, next) {
   if (!!req.session.user) {
-    res.cookie('temp', req.body.username, { maxAge : 2000});
+    res.cookie('temp', req.body.username, { maxAge : 5000});
     res.status(200);
     res.end();
   } else {

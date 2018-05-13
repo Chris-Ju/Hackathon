@@ -143,7 +143,6 @@ function findComment(data, callback) {
 function findAllCandy(data, callback) {
     MongoClient.connect(url, function (err, client) {
         var dbase = client.db('mytestingdb');
-        var random = Math.random();
         dbase.collection('candy').find(data).toArray(function (err, result) {
             client.close();
             callback(result);
@@ -155,7 +154,6 @@ function findAllCandy(data, callback) {
 function findAllStory(data, callback) {
     MongoClient.connect(url, function (err, client) {
         var dbase = client.db('mytestingdb');
-        var random = Math.random();
         dbase.collection('story').find(data).toArray(function (err, result) {
             client.close();
             callback(result);
