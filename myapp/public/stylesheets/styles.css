@@ -171,14 +171,14 @@ body {
 
 .logo_box {
   width: 400px;
-  height: 200px;
+  height: 100px;
   padding: 35px;
   color: #EEE;
   position: absolute;
   left: 50%;
   top: 50%;
   margin-left: -200px;
-  margin-top: -250px;
+  margin-top: -280px;
 }
 
 .logo_box h3 {
@@ -303,7 +303,7 @@ body {
 
 .submit {
   padding: 15px;
-  margin-top: 40px;
+  margin-top: 20px;
   display: block;
   margin: 0 auto;
   text-decoration: none;
