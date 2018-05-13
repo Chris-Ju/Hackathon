@@ -175,3 +175,9 @@ body {
   display: none;
   margin-top: 30px;
 }
+
+.dateTime{
+  position: relative;
+  font-size: 10px;
+  margin-left: 250px;
+}

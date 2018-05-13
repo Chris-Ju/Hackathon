@@ -43,7 +43,7 @@ $(document).ready(function () {
                       var obj = arr[i];
                       var content = obj.content;
                       var li = $('<li class="divList"><img src="images/dialeft.png" class="commendImg"/><p class= "commendText">' +
-                        content + '</p ></li>');
+                        content + '</p ><p class="dateTime">这是一个时间</p></li>');
                       ul.append(li);
                       console.log(obj);
                     }
