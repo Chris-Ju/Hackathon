@@ -31,7 +31,6 @@ $(document).ready(function () {
             },
             statusCode: {
               200: function (data) {
-                console.log(data);
                 var arr = eval(data.responseText);
                 if (arr.length > 0) {
                   $('.friend').addClass('zoomOut');
@@ -42,10 +41,10 @@ $(document).ready(function () {
                     for (var i = 0; i < arr.length; i++) {
                       var obj = arr[i];
                       var content = obj.content;
+                      var date = obj.date;
                       var li = $('<li class="divList"><img src="images/dialeft.png" class="commendImg"/><p class= "commendText">' +
-                        content + '</p ><p class="dateTime">这是一个时间</p></li>');
+                        content + '</p ><p class="dateTime">' + date + '</p></li>');
                       ul.append(li);
-                      console.log(obj);
                     }
                   }, 1000);
                 }

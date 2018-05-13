@@ -31,7 +31,6 @@ $(document).ready(function () {
             },
             statusCode: {
               200: function (data) {
-                console.log(data);
                 var arr = eval(data.responseText);
                 if (arr.length > 0) {
                   $('.friend').addClass('zoomOut');
@@ -43,9 +42,8 @@ $(document).ready(function () {
                       var obj = arr[i];
                       var content = obj.content;
                       var li = $('<li class="divList"><img src="images/dialeft.png" class="commendImg"/><p class= "commendText">' +
-                        content + '</p ></li>');
+                        content + '</p ><p class="dateTime">' + date + '</p></li>');
                       ul.append(li);
-                      console.log(obj);
                     }
                   }, 1000);
                 }
